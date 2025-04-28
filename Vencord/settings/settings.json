@@ -249,7 +249,7 @@
         },
         "ImageZoom": {
             "enabled": true,
-            "size": 320,
+            "size": 1130,
             "zoom": 1.9,
             "saveZoomValues": true,
             "nearestNeighbour": false,
@@ -569,7 +569,9 @@
             "enabled": false
         },
         "ViewIcons": {
-            "enabled": true
+            "enabled": true,
+            "format": "webp",
+            "imgSize": "1024"
         },
         "ViewRaw": {
             "enabled": false
@@ -617,6 +619,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1745329673828
+        "settingsSyncVersion": 1745697734047
     }
 }
