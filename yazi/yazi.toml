@@ -48,6 +48,9 @@ play = [
 	{ run = 'mpv --force-window "$@"', orphan = true, for = "unix" },
 	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
+set-wallpaper = [
+	{ run = 'wallust run $1 & hyprctl hyprpaper reload ,$1', desc = "Set as Wallpaper", for = "linux"}
+]
 
 [open]
 rules = [
@@ -56,7 +59,7 @@ rules = [
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
 	# Image
-	{ mime = "image/*", use = [ "open", "reveal" ] },
+	{ mime = "image/*", use = [ "open", "reveal" ,"set-wallpaper"] },
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
 	# Archive
