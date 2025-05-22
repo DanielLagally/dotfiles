@@ -32,7 +32,7 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 [opener]
 edit = [
 	{ run = '${EDITOR:-vi} "$@"', desc = "Edit", block = true, for = "unix" },
-	{ run = 'sudo ${EDITOR:-vi} "$@"', desc = "Edit (Admin)", block = true, for = "unix" },
+	{ run = 'sudo -E ${EDITOR:-vi} "$@"', desc = "Edit (Admin)", block = true, for = "unix" },
 ]
 open = [
 	{ run = 'xdg-open "$1"',                desc = "Open", for = "linux" },
