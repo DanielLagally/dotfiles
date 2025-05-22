@@ -31,11 +31,14 @@ saturation = 20
 # Alpha value for templating, by default 100 (no other use whatsoever)
 #alpha = 100
 
+env_vars = true
+
 [templates]
 # NOTE: prefer '' over "" for paths, avoids escaping.
 # template: A RELATIVE path that points to `~/.config/wallust/template` (depends on platform)
 # target: ABSOLUTE path in which to place a file with generated templated values.
 # ¡ If either one is a directory, then both SHOULD be one. !
-hypr = { src = "hyprland-colors.conf", dst = "~/.config/hypr/colors.conf" }
-hyprpaper = { src = "hyprpaper.conf", dst = "~/.config/hypr/hyprpaper.conf" }
-ghostty = { src = "ghostty-colors", dst = "~/.config/ghostty/colors"}
+hypr = { src = "hypr/hyprland-colors.conf", dst = "~/.config/hypr/colors.conf" }
+hyprpaper = { src = "hypr/hyprpaper.conf", dst = "~/.config/hypr/hyprpaper.conf" }
+hyprspecifics = { src = "hypr/specifics.conf", dst = "~/.config/hypr/specifics.conf" }
+ghostty = { src = "ghostty/ghostty-colors", dst = "~/.config/ghostty/colors"}
