@@ -2,3 +2,17 @@ theme = "base16_transparent"
 
 [editor]
 soft-wrap.enable = true
+end-of-line-diagnostics = "hint"
+color-modes = true
+
+[editor.inline-diagnostics]
+cursor-line = "error"
+other-lines = "error"
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.auto-save]
+focus-lost = true

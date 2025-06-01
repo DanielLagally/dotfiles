@@ -1,0 +1,4 @@
+[[language]]
+name = "ocaml"
+diagnostic-severity = "hint"
+formatter = { command = "ocamlformat" }
