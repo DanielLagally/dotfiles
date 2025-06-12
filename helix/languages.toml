@@ -1,4 +1,8 @@
+[language-server]
+ocamllsp = { command = "ocamllsp"}
+
 [[language]]
 name = "ocaml"
 diagnostic-severity = "hint"
 formatter = { command = "ocamlformat" }
+language-servers = [ "ocamllsp" ]
