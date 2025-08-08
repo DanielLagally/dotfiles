@@ -5,6 +5,9 @@ soft-wrap.enable = true
 end-of-line-diagnostics = "hint"
 color-modes = true
 
+[editor.lsp]
+display-inlay-hints = true
+
 [editor.inline-diagnostics]
 cursor-line = "error"
 other-lines = "error"
@@ -16,3 +19,6 @@ select = "underline"
 
 [editor.auto-save]
 focus-lost = true
+
+[keys]
+normal.space.H = ":toggle lsp.display-inlay-hints"

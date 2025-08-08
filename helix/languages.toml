@@ -1,8 +1,18 @@
-[language-server]
-ocamllsp = { command = "ocamllsp"}
-
 [[language]]
 name = "ocaml"
 diagnostic-severity = "hint"
 formatter = { command = "ocamlformat" }
 language-servers = [ "ocamllsp" ]
+
+[language-server.ocamllsp]
+command = "ocamllsp"
+
+[language-server.ocamllsp.config]
+inlayHints.enable = true
+inlayHints.hintPatternVariables = true
+inlayHints.hintLetBindings = true
+inlayHints.hintFunctionParams = true
+codelens.enable = true
+extendedHover.enable = true
+syntaxDocumentation.enable = true
+
