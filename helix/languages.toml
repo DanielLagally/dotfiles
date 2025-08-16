@@ -16,3 +16,14 @@ codelens.enable = true
 extendedHover.enable = true
 syntaxDocumentation.enable = true
 
+[[language]]
+name = "rust"
+auto-format = false
+formatter = { command = "cargo fmt", args = ["--", "--config tab_spaces=2"]}
+indent = { tab-width = 2, unit = "  " }
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+provideFormatter = true
+rustfmt.rangeFormatting.enable = true
+cargo.features = "all"

@@ -9,8 +9,8 @@ color-modes = true
 display-inlay-hints = true
 
 [editor.inline-diagnostics]
-cursor-line = "error"
-other-lines = "error"
+cursor-line = "hint"
+other-lines = "disable"
 
 [editor.cursor-shape]
 normal = "block"
