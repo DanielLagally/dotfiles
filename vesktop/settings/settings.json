@@ -1,5 +1,5 @@
 {
-    "autoUpdate": false,
+    "autoUpdate": true,
     "autoUpdateNotification": false,
     "useQuickCss": true,
     "themeLinks": [],
@@ -164,9 +164,6 @@
         },
         "DontRoundMyTimestamps": {
             "enabled": false
-        },
-        "EmoteCloner": {
-            "enabled": true
         },
         "Experiments": {
             "enabled": false
@@ -581,7 +578,8 @@
             "enabled": false
         },
         "VolumeBooster": {
-            "enabled": false
+            "enabled": true,
+            "multiplier": 2
         },
         "WhoReacted": {
             "enabled": false
@@ -620,6 +618,15 @@
         },
         "WebContextMenus": {
             "enabled": true
+        },
+        "ExpressionCloner": {
+            "enabled": true
+        },
+        "CopyStickerLinks": {
+            "enabled": false
+        },
+        "ImageFilename": {
+            "enabled": false
         }
     },
     "notifications": {
@@ -632,6 +639,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1747596890430
+        "settingsSyncVersion": 1756055396977
     }
 }
