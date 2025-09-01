@@ -13,6 +13,9 @@ application/pdf=zen-twilight.desktop
 application/octet-stream=yazi.desktop
 inode/directory=yazi-ghostty.desktop
 x-scheme-handler/discord=vesktop.desktop
+x-scheme-handler/wootwoot=wootility.desktop
+x-scheme-handler/web+wootwoot=wootility.desktop
+x-scheme-handler/whatsapp=Altus.desktop
 
 [Added Associations]
 x-scheme-handler/http=zen-twilight.desktop;userapp-Twilight-IN7S42.desktop;userapp-Twilight-A9EB42.desktop;
