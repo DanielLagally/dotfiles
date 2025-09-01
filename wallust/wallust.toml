@@ -16,7 +16,7 @@ color_space = "lch"
 # harddark - harddark16 - harddarkcomp - harddarkcomp16
 # softdark - softdark16 - softdarkcomp - softdarkcomp16
 # softlight - softlight16 - softlightcomp - softlightcomp16
-palette = "dark16"
+palette = "harddark16"
 
 # Ensures a "readable contrast" (OPTIONAL, disabled by default)
 # Should only be enabled when you notice an unreadable contrast frequently happening
@@ -26,7 +26,7 @@ check_contrast = true
 # Color saturation, between [1% and 100%] (OPTIONAL, disabled by default)
 # usually something higher than 50 increases the saturation and below
 # decreases it (on a scheme with strong and vivid colors)
-saturation = 20
+saturation = 25
 
 # Alpha value for templating, by default 100 (no other use whatsoever)
 #alpha = 100
@@ -42,3 +42,4 @@ hypr = { src = "hypr/hyprland-colors.conf", dst = "~/.config/hypr/colors.conf" }
 hyprpaper = { src = "hypr/hyprpaper.conf", dst = "~/.config/hypr/hyprpaper.conf" }
 hyprspecifics = { src = "hypr/specifics.conf", dst = "~/.config/hypr/specifics.conf" }
 ghostty = { src = "ghostty/ghostty-colors", dst = "~/.config/ghostty/colors"}
+waybar = { src = "colors-waybar.css", dst = "~/.config/waybar/colors-waybar.css"}
