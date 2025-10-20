@@ -27,3 +27,22 @@ check.command = "clippy"
 provideFormatter = true
 rustfmt.rangeFormatting.enable = true
 cargo.features = "all"
+
+[[language]]
+name = "python"
+language-servers = [ "basedpyright", "ruff" ]
+
+[language-server.basedpyright.config.python.analysis]
+typeCheckingMode = "recommended"
+
+[language-server.basedpyright.config.basedpyright.analysis.inlayHints]
+variableTypes = true
+callArgumentNames = true
+functionReturnTypes = true
+genericTypes = true
+
+[language-server.ruff.config.settings]
+args = ["--ignore", "E501"]
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
