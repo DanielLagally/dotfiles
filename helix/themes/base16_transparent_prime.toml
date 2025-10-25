@@ -1,0 +1,5 @@
+inherits = "base16_transparent"
+
+"ui.virtual.inlay-hint" = { fg = "light-gray", modifiers = ["italic", "dim"] }
+"ui.virtual.inlay-hint.parameter" = { fg = "light-gray", modifiers = ["italic", "dim"] }
+"ui.virtual.inlay-hint.type" = { fg = "light-gray", modifiers = ["italic", "dim"] }
