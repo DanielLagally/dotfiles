@@ -3,8 +3,8 @@ if status is-interactive
     starship init fish | source
 
     # Direnv + Zoxide
-    command -v direnv &> /dev/null && direnv hook fish | source
-    command -v zoxide &> /dev/null && zoxide init fish --cmd cd | source
+    command -v direnv &>/dev/null && direnv hook fish | source
+    command -v zoxide &>/dev/null && zoxide init fish --cmd cd | source
 
     # Better ls
     alias ls='eza --icons --group-directories-first -1'
@@ -26,16 +26,18 @@ if status is-interactive
     abbr gco 'git checkout'
     abbr gsh 'git show'
 
-    abbr l 'ls'
+    abbr l ls
     abbr ll 'ls -l'
     abbr la 'ls -a'
     abbr lla 'ls -la'
 
     # Custom colours
-    cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
+    cat ~/.local/state/caelestia/sequences.txt 2>/dev/null
 
     # For jumping between prompts in foot terminal
     function mark_prompt_start --on-event fish_prompt
         echo -en "\e]133;A\e\\"
     end
+
+    set -x DEEPL_API_KEY 842498be-d08c-44de-8fe1-f98b3c133432:fx
 end
