@@ -46,3 +46,19 @@ args = ["--ignore", "E501"]
 [language-server.ruff]
 command = "ruff"
 args = ["server"]
+
+[language.debugger]
+name = "debugpy"
+transport = "stdio"
+command = "python3"
+args = ["-m",  "debugpy.adapter"]
+
+[[language.debugger.templates]]
+name = "source"
+request = "launch"
+completion = [ { name = "entrypoint", completion = "filename", default = "." } ]
+args = { mode = "debug", program = "{0}"}
+
+[[language]]
+name = "c"
+formatter = { command = "clang-format", args = ["--style={BasedOnStyle: LLVM, PointerAlignment: Left}"] }

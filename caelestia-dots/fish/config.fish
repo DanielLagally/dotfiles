@@ -8,6 +8,7 @@ if status is-interactive
 
     # Better ls
     alias ls='eza --icons --group-directories-first -1'
+    alias rm='trash'
 
     # Abbrs
     abbr gd 'git diff'
