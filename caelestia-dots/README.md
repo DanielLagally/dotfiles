@@ -19,7 +19,7 @@ The install script has some options for installing configs for some apps.
 
 ```
 $ ./install.fish -h
-usage: ./install.sh [-h] [--noconfirm] [--spotify] [--vscode] [--discord] [--paru]
+usage: ./install.sh [-h] [--noconfirm] [--spotify] [--vscode] [--discord] [--aur-helper]
 
 options:
   -h, --help                  show this help message and exit
@@ -28,7 +28,7 @@ options:
   --vscode=[codium|code]      install VSCodium (or VSCode)
   --discord                   install Discord (OpenAsar + Equicord)
   --zen                       install Zen browser
-  --paru                      use paru instead of yay as AUR helper
+  --aur-helper=[yay|paru]     the AUR helper to use
 ```
 
 For example:
@@ -61,8 +61,7 @@ Dependencies:
 -   eza
 -   adw-gtk-theme
 -   papirus-icon-theme
--   qt5ct-kde
--   qt6ct-kde
+-   qtengine-git
 -   ttf-jetbrains-mono-nerd
 
 Install all dependencies and follow the installation guides of the
@@ -70,8 +69,9 @@ Install all dependencies and follow the installation guides of the
 to install them.
 
 > [!TIP]
-> If on Arch or an Arch-based distro, there is a meta package available in the AUR
-> that pulls in all dependencies (`caelestia-meta`).
+> If on Arch or an Arch-based distro, there is a meta package available [in this repository](PKGBUILD)
+> that pulls in all dependencies. It can be installed through the install script, makepkg/pacman, yay,
+> paru, or your preferred AUR helper.
 
 Then copy or symlink the `hypr`, `foot`, `fish`, `fastfetch`, `uwsm` and `btop` folders to the
 `$XDG_CONFIG_HOME` (usually `~/.config`) directory. e.g. `hypr -> ~/.config/hypr`.

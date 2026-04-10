@@ -11,6 +11,7 @@ if status is-interactive
     alias rm='trash'
 
     # Abbrs
+    abbr lg lazygit
     abbr gd 'git diff'
     abbr ga 'git add .'
     abbr gc 'git commit -am'
@@ -40,5 +41,6 @@ if status is-interactive
         echo -en "\e]133;A\e\\"
     end
 
-    set -x DEEPL_API_KEY 842498be-d08c-44de-8fe1-f98b3c133432:fx
+    # Custom fish config
+    source ~/.config/caelestia/user-config.fish 2>/dev/null
 end
