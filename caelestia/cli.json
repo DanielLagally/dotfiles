@@ -17,7 +17,7 @@
         "communication": {
             "discord": {
                 "enable": true,
-                "match": [{ "class": "equibop" }],
+                "match": [{ "class": "equibop" }, {"initialTitle": "Discord"} ],
                 "command": ["equibop"],
                 "move": true
             }
@@ -35,6 +35,12 @@
                 "enable": true,
                 "match": [{ "class": "Spotify" }, { "initialTitle": "Spotify" }, { "initialTitle": "Spotify Free" }],
                 "command": ["spicetify", "watch", "-s"],
+                "move": true
+            },
+            "soundcloud": {
+                "enable": true,
+                "match": [{ "title": "Soundcloud" }],
+                "command": ["app2unit", "Soundcloud.desktop"],
                 "move": true
             },
             "feishin": {
