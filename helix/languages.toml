@@ -62,3 +62,10 @@ args = { mode = "debug", program = "{0}"}
 [[language]]
 name = "c"
 formatter = { command = "clang-format", args = ["--style={BasedOnStyle: LLVM, PointerAlignment: Left}"] }
+
+[[language]]
+name = "nix"
+language-servers = ["nixd","nil"]
+
+[language-server.nixd]
+command = "nixd"
