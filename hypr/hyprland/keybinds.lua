@@ -1,4 +1,36 @@
 local fn = require("_upstream.utils.functions")
+local hs = require("hyprsplit")
+
+-- hyprsplit's swap_monitors() needs explicit monitor names, unlike the old
+-- C++ plugin's `split:swapactiveworkspaces current +1` — resolve "current"
+-- and "next" (wrapping, ordered by monitor id) freshly on every keypress.
+--
+-- NOTE: this moves windows one at a time (hyprsplit's own implementation,
+-- documented as "does not preserve layout"), so tiling order/position can
+-- shift. A version that moves the whole workspace via monitor:set_workspace
+-- instead (preserving the layout tree) hit an unresolved Hyprland-internal
+-- edge case on the second half of the swap — see git history if revisiting.
+local function swap_with_next_monitor()
+    return function()
+        local active = hl.get_active_monitor()
+        local mons = hl.get_monitors()
+        if not active or #mons < 2 then return end
+
+        table.sort(mons, function(a, b) return a.id < b.id end)
+
+        local idx
+        for i, m in ipairs(mons) do
+            if m.id == active.id then
+                idx = i
+                break
+            end
+        end
+        if not idx then return end
+
+        local next_mon = mons[(idx % #mons) + 1]
+        return hs.dsp.workspace.swap_monitors({ monitor1 = active.name, monitor2 = next_mon.name })()
+    end
+end
 
 -- Same workspace-index math as upstream's fn.wsaction, but supporting a
 -- silent move (window follows to the target workspace without switching
@@ -21,7 +53,10 @@ hl.define_submap("global", function()
     -- ## Shell keybinds
     -- Launcher
     hl.bind("SUPER + Space", hl.dsp.global("caelestia:launcher"))
-    hl.bind("SUPER", hl.dsp.global("caelestia:launcherInterrupt"), { catchall = true, non_consuming = true, ignore_mods = true })
+    -- `catchall` moved from an `hl.bind` option to a magic key-string value
+    -- in newer Hyprland builds (only valid inside a submap, hence here) —
+    -- there's no longer a way to gate it to a specific modifier like SUPER.
+    hl.bind("catchall", hl.dsp.global("caelestia:launcherInterrupt"), { non_consuming = true, ignore_mods = true })
     hl.bind("SUPER + mouse:272", hl.dsp.global("caelestia:launcherInterrupt"), { non_consuming = true, ignore_mods = true })
     hl.bind("SUPER + mouse:273", hl.dsp.global("caelestia:launcherInterrupt"), { non_consuming = true, ignore_mods = true })
     hl.bind("SUPER + mouse:274", hl.dsp.global("caelestia:launcherInterrupt"), { non_consuming = true, ignore_mods = true })
@@ -205,7 +240,7 @@ hl.define_submap("global", function()
     -- hl.bind("SUPER + T", hl.dsp.layout("togglesplit"))
     -- hl.bind("ALT + Tab", hl.dsp.exec_cmd("hyprtasking:toggle all"))
     -- hl.bind("ALT + Tab", hl.dsp.exec_cmd("overview:toggle all"))
-    -- hl.bind("SUPER + Tab", hl.dsp.exec_cmd("split:swapactiveworkspaces current +1"))
+    hl.bind("SUPER + Tab", swap_with_next_monitor())
     hl.bind("CTRL+SUPER+ALT + M", hl.dsp.exit())
 
 end)

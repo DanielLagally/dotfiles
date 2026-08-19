@@ -552,8 +552,10 @@
             "enabled": false,
             "provider": [
                 {
+                    "id": "vpn-mszizs6g-606re"
                 }
-            ]
+            ],
+            "selectedProvider": "vpn-mszizs6g-606re"
         }
     }
 }
