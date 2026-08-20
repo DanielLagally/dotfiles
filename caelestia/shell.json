@@ -431,7 +431,7 @@
                     "idleAction": [
                         "hibernate"
                     ],
-                    "timeout": 600
+                    "timeout": 1800
                 }
             ]
         },
