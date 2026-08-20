@@ -70,7 +70,7 @@ hl.define_submap("global", function()
     hl.bind("CTRL+ALT + Delete", hl.dsp.global("caelestia:session"))
     hl.bind("CTRL+ALT + C", hl.dsp.global("caelestia:clearNotifs"), { locked = true, non_consuming = true })
     hl.bind("SUPER + N", hl.dsp.global("caelestia:sidebar"))
-    hl.bind("SUPER + K", hl.dsp.global("caelestia:showall"))
+    -- hl.bind("SUPER + K", hl.dsp.global("caelestia:showall"))
 
     -- Restore lock
     hl.bind("SUPER+ALT + L", hl.dsp.exec_cmd("caelestia shell -d"), { locked = true })
@@ -91,8 +91,8 @@ hl.define_submap("global", function()
     hl.bind("XF86AudioStop", hl.dsp.global("caelestia:mediaStop"), { locked = true })
 
     -- Kill/restart
-    hl.bind("CTRL+SUPER+SHIFT + R", hl.dsp.exec_cmd("qs -c caelestia kill"), { release = true })
-    hl.bind("CTRL+SUPER+ALT + R", hl.dsp.exec_cmd("qs -c caelestia kill; sleep .1; caelestia shell -d"), { release = true })
+    hl.bind("CTRL+SUPER+SHIFT + R", hl.dsp.exec_cmd("caelestia shell -k"), { release = true })
+    hl.bind("CTRL+SUPER+ALT + R", hl.dsp.exec_cmd("caelestia shell -k; sleep 1; caelestia shell -d"), { release = true })
 
     -- Go to / move to workspace #, and workspace group #
     for i = 1, 10 do
@@ -139,7 +139,7 @@ hl.define_submap("global", function()
     hl.bind("SUPER+SHIFT + Comma", hl.dsp.group.lock_active())
 
     -- Window actions
-    hl.bind("SUPER + t", hl.dsp.layout("togglesplit"))
+    -- hl.bind("SUPER + t", hl.dsp.layout("togglesplit"))
     hl.bind("SUPER + h", hl.dsp.focus({ direction = "left" }))
     hl.bind("SUPER + l", hl.dsp.focus({ direction = "right" }))
     hl.bind("SUPER + k", hl.dsp.focus({ direction = "up" }))

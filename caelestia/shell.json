@@ -429,7 +429,7 @@
                 },
                 {
                     "idleAction": [
-                        "suspendThenHibernate"
+                        "hibernate"
                     ],
                     "timeout": 600
                 }
