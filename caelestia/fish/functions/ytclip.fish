@@ -21,7 +21,7 @@ function ytclip --description "Download a YouTube video section to ~/Videos/ytcl
 
     # Download section using an output template prefixed by a timestamp
     # Redirect yt-dlp stdout to stderr to keep stdout clean for piping/substitution
-    yt-dlp -f "bv[ext=mp4]+ba[ext=m4a]/b[ext=mp4]" \
+    yt-dlp -4 -f "bv[ext=mp4]+ba[ext=m4a]/b[ext=mp4]" \
         --download-sections "*$start-$end" \
         --force-keyframes-at-cuts \
         -o "$output_dir/%(autonumber)s_%(title)s.%(ext)s" \
