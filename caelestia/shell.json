@@ -739,7 +739,7 @@
             "dndChanged": true,
             "fullscreen": "off",
             "gameModeChanged": true,
-            "kbLayoutChanged": true,
+            "kbLayoutChanged": false,
             "kbLimit": true,
             "nowPlaying": false,
             "numLockChanged": true,
