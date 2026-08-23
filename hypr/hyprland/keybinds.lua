@@ -70,7 +70,6 @@ hl.define_submap("global", function()
     hl.bind("CTRL+ALT + Delete", hl.dsp.global("caelestia:session"))
     hl.bind("CTRL+ALT + C", hl.dsp.global("caelestia:clearNotifs"), { locked = true, non_consuming = true })
     hl.bind("SUPER + N", hl.dsp.global("caelestia:sidebar"))
-    -- hl.bind("SUPER + K", hl.dsp.global("caelestia:showall"))
 
     -- Restore lock
     hl.bind("SUPER+ALT + L", hl.dsp.exec_cmd("caelestia shell -d"), { locked = true })
@@ -125,8 +124,6 @@ hl.define_submap("global", function()
     hl.bind("CTRL+SUPER+SHIFT + right", hl.dsp.window.move({ workspace = "+1" }), { repeating = true })
     hl.bind("CTRL+SUPER+SHIFT + left", hl.dsp.window.move({ workspace = "-1" }), { repeating = true })
     -- Move window to/from special workspace
-    -- hl.bind("SUPER+ALT + S", hl.dsp.window.move({ workspace = "special:special" }))
-    -- hl.bind("CTRL+SUPER+SHIFT + S", hl.dsp.window.move({ workspace = "e+0" }))
     hl.bind("SUPER+SHIFT + S", hl.dsp.window.move({ workspace = "special:special" }))
 
     -- Window groups
@@ -139,7 +136,6 @@ hl.define_submap("global", function()
     hl.bind("SUPER+SHIFT + Comma", hl.dsp.group.lock_active())
 
     -- Window actions
-    -- hl.bind("SUPER + t", hl.dsp.layout("togglesplit"))
     hl.bind("SUPER + h", hl.dsp.focus({ direction = "left" }))
     hl.bind("SUPER + l", hl.dsp.focus({ direction = "right" }))
     hl.bind("SUPER + k", hl.dsp.focus({ direction = "up" }))
@@ -179,19 +175,15 @@ hl.define_submap("global", function()
     hl.bind("SUPER + Return", hl.dsp.exec_cmd("app2unit -- foot"))
     hl.bind("SUPER + Z", hl.dsp.exec_cmd("app2unit -- zen-twilight"))
     hl.bind("SUPER + X", hl.dsp.exec_cmd("foot fish -ic hx"))
-    -- hl.bind("SUPER + G", hl.dsp.exec_cmd("app2unit -- github-desktop"))
     hl.bind("SUPER + G", hl.dsp.exec_cmd("app2unit -- Gemini.desktop"))
     hl.bind("SUPER + C", hl.dsp.exec_cmd("app2unit -- Claude.desktop"))
     hl.bind("SUPER + E", hl.dsp.exec_cmd("foot fish -ic yazi"))
-    -- hl.bind("SUPER+ALT + E", hl.dsp.exec_cmd("app2unit -- nemo"))
-    -- hl.bind("CTRL+ALT + Escape", hl.dsp.exec_cmd("app2unit -- qps"))
     hl.bind("CTRL+ALT + V", hl.dsp.exec_cmd("app2unit -- pavucontrol"))
 
     -- Utilities
     hl.bind("Print", hl.dsp.exec_cmd("grimblast copy area --freeze; pkill -9 hyprpicker"))
     hl.bind("ALT + Print", hl.dsp.exec_cmd("caelestia screenshot"), { locked = true }) -- Full screen capture > clipboard
     hl.bind("SHIFT + Print", hl.dsp.global("caelestia:screenshotFreeze")) -- Capture region (freeze)
-    -- hl.bind("SHIFT + Print", hl.dsp.global("caelestia:screenshot")) -- Capture region
     hl.bind("SUPER+ALT + R", hl.dsp.exec_cmd("caelestia record -s")) -- Record screen with sound
     hl.bind("CTRL+ALT + R", hl.dsp.exec_cmd("caelestia record")) -- Record screen
     hl.bind("SUPER+SHIFT+ALT + R", hl.dsp.exec_cmd("caelestia record -r")) -- Record region
@@ -237,9 +229,6 @@ hl.define_submap("global", function()
     -- Misc
     hl.bind("CTRL+SUPER+ALT + Q", hl.dsp.exec_cmd("hyprctl kill"))
     hl.bind("CTRL+SHIFT + X", hl.dsp.exec_cmd("equibop --toggle-mic"))
-    -- hl.bind("SUPER + T", hl.dsp.layout("togglesplit"))
-    -- hl.bind("ALT + Tab", hl.dsp.exec_cmd("hyprtasking:toggle all"))
-    -- hl.bind("ALT + Tab", hl.dsp.exec_cmd("overview:toggle all"))
     hl.bind("SUPER + Tab", swap_with_next_monitor())
     hl.bind("CTRL+SUPER+ALT + M", hl.dsp.exit())
 
