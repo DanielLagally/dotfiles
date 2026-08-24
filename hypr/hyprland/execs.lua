@@ -6,7 +6,7 @@ require("hyprsplit")
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("fcitx5")
-    hl.exec_cmd("easyeffects")
+    hl.exec_cmd("easyeffects --hide-window")
 
     -- No display manager/UWSM here (launched via plain `start-hyprland`
     -- from a TTY) — nothing else tells systemd this is a graphical
