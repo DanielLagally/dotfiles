@@ -170,14 +170,14 @@ hl.define_submap("global", function()
     hl.bind("SUPER + W", hl.dsp.exec_cmd("caelestia toggle whatsapp"))
     hl.bind("SUPER + T", hl.dsp.exec_cmd("caelestia toggle thunderbird"))
     hl.bind("SUPER + R", hl.dsp.exec_cmd("caelestia toggle todo"))
+    hl.bind("SUPER + G", hl.dsp.exec_cmd("caelestia toggle grok"))
+    hl.bind("SUPER + C", hl.dsp.exec_cmd("caelestia toggle claude"))
+    hl.bind("SUPER + Y", hl.dsp.exec_cmd("caelestia toggle zen"))
+    hl.bind("SUPER + X", hl.dsp.exec_cmd("caelestia toggle helix"))
+    hl.bind("SUPER + E", hl.dsp.exec_cmd("caelestia toggle yazi"))
 
     -- Apps
     hl.bind("SUPER + Return", hl.dsp.exec_cmd("app2unit -- foot"))
-    hl.bind("SUPER + Z", hl.dsp.exec_cmd("app2unit -- zen-twilight"))
-    hl.bind("SUPER + X", hl.dsp.exec_cmd("foot fish -ic hx"))
-    hl.bind("SUPER + G", hl.dsp.exec_cmd("app2unit -- Grok.desktop"))
-    hl.bind("SUPER + C", hl.dsp.exec_cmd("app2unit -- Claude.desktop"))
-    hl.bind("SUPER + E", hl.dsp.exec_cmd("foot fish -ic yazi"))
     hl.bind("CTRL+ALT + V", hl.dsp.exec_cmd("app2unit -- pavucontrol"))
 
     -- Utilities

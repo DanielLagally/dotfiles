@@ -84,6 +84,46 @@
                 "command": ["todoist"],
                 "move": true
             }
+        },
+        "grok": {
+            "grok": {
+                "enable": true,
+                "match": [{ "class": "zen-twilight", "title": "Grok —" }],
+                "command": ["app2unit", "--", "Grok.desktop"],
+                "move": true
+            }
+        },
+        "claude": {
+            "claude": {
+                "enable": true,
+                "match": [{ "class": "zen-twilight", "title": "Claude —" }],
+                "command": ["app2unit", "--", "Claude.desktop"],
+                "move": true
+            }
+        },
+        "zen": {
+            "zen": {
+                "enable": true,
+                "match": [{ "class": "zen-twilight" }],
+                "command": ["app2unit", "--", "zen-twilight"],
+                "move": false
+            }
+        },
+        "helix": {
+            "helix": {
+                "enable": true,
+                "match": [{ "class": "helix" }],
+                "command": ["foot", "-a", "helix", "-T", "helix", "fish", "-ic", "hx"],
+                "move": true
+            }
+        },
+        "yazi": {
+            "yazi": {
+                "enable": true,
+                "match": [{ "class": "yazi" }],
+                "command": ["foot", "-a", "yazi", "-T", "yazi", "fish", "-ic", "yazi"],
+                "move": true
+            }
         }
     },
     "dots": {
