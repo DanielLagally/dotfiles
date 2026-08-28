@@ -6,6 +6,35 @@ if status is-interactive
     command -v direnv &> /dev/null && direnv hook fish | source
     command -v zoxide &> /dev/null && zoxide init fish --cmd cd | source
 
+    # fish computes its completion search path once at startup and never
+    # rereads XDG_DATA_DIRS afterwards, so a Nix devShell entered via direnv
+    # (which only updates XDG_DATA_DIRS, not fish's own state) never gets
+    # its completions loaded in an already-running shell without this: on
+    # every XDG_DATA_DIRS change, directly source any new
+    # fish/vendor_completions.d/*.fish files it points at.
+    function __direnv_load_vendor_completions --on-variable XDG_DATA_DIRS
+        set -q __direnv_completions_seen; or set -g __direnv_completions_seen
+        for dir in (string split : -- $XDG_DATA_DIRS)
+            set -l c $dir/fish/vendor_completions.d
+            if test -d $c; and not contains $c $__direnv_completions_seen
+                set -a __direnv_completions_seen $c
+                for f in $c/*.fish
+                    source $f
+                end
+            end
+        end
+    end
+
+    # rumination (~/Dev/rumination): reload completions from the local dev
+    # build whenever that project's direnv session is entered/left. This is
+    # personal/project-specific (unlike the generic hook above), since the
+    # dev alias runs straight off a debug binary, not a Nix-packaged one.
+    function __rumination_reload_completions --on-variable DIRENV_DIR
+        if test "$DIRENV_DIR" = "-$HOME/Dev/rumination"; and test -x ~/Dev/rumination/target/debug/rumination
+            ~/Dev/rumination/target/debug/rumination completions fish | source
+        end
+    end
+
     # Better ls
     command -v eza &> /dev/null && alias ls='eza --icons --group-directories-first -1'
 
