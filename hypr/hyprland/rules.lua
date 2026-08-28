@@ -31,15 +31,3 @@ hl.window_rule({
     no_initial_focus = true,
     no_focus = true,
 })
-
-hl.window_rule({ match = { class = "helix" }, workspace = "special:helix" })
-hl.window_rule({ match = { class = "yazi" }, workspace = "special:yazi" })
-hl.window_rule({ match = { class = "zen-twilight" }, workspace = "special:zen" })
-hl.window_rule({
-    match = { class = "zen-twilight", title = "^Grok( —|$)" },
-    workspace = "special:grok",
-})
-hl.window_rule({
-    match = { class = "zen-twilight", title = "^Claude( —|$)" },
-    workspace = "special:claude",
-})

@@ -48,6 +48,31 @@ local function wsaction_move_silent(range, i)
     end
 end
 
+-- If already viewing this special WS, hide it. If it has windows, show it.
+-- If empty, spawn cmds onto it (Hypr shows the special WS on map).
+local function toggle_special(name, cmds)
+    return function()
+        local target = "special:" .. name
+        local active = hl.get_active_special_workspace()
+        if active and active.name == target then
+            return hl.dispatch(hl.dsp.workspace.toggle_special(name))
+        end
+        local occupied = false
+        for _, w in ipairs(hl.get_windows() or {}) do
+            if w.workspace and w.workspace.name == target then
+                occupied = true
+                break
+            end
+        end
+        if occupied then
+            return hl.dispatch(hl.dsp.workspace.toggle_special(name))
+        end
+        for _, cmd in ipairs(cmds) do
+            hl.dispatch(hl.dsp.exec_cmd(cmd, { workspace = target }))
+        end
+    end
+end
+
 hl.define_submap("global", function()
 
     -- ## Shell keybinds
@@ -164,17 +189,22 @@ hl.define_submap("global", function()
     hl.bind("SUPER+ALT + Q", hl.dsp.window.kill())
 
     -- Special workspace toggles
-    hl.bind("CTRL+SHIFT + Escape", hl.dsp.exec_cmd("caelestia toggle sysmon"))
-    hl.bind("SUPER + M", hl.dsp.exec_cmd("caelestia toggle music"))
-    hl.bind("SUPER + D", hl.dsp.exec_cmd("caelestia toggle communication"))
-    hl.bind("SUPER + W", hl.dsp.exec_cmd("caelestia toggle whatsapp"))
-    hl.bind("SUPER + T", hl.dsp.exec_cmd("caelestia toggle thunderbird"))
-    hl.bind("SUPER + R", hl.dsp.exec_cmd("caelestia toggle todo"))
-    hl.bind("SUPER + G", hl.dsp.exec_cmd("caelestia toggle grok"))
-    hl.bind("SUPER + C", hl.dsp.exec_cmd("caelestia toggle claude"))
-    hl.bind("SUPER + Y", hl.dsp.exec_cmd("caelestia toggle zen"))
-    hl.bind("SUPER + X", hl.dsp.exec_cmd("caelestia toggle helix"))
-    hl.bind("SUPER + E", hl.dsp.exec_cmd("caelestia toggle yazi"))
+    hl.bind("CTRL+SHIFT + Escape", toggle_special("sysmon", {
+        "foot -a btop -T btop fish -C 'exec btop'",
+    }))
+    hl.bind("SUPER + M", toggle_special("music", {
+        "spicetify watch -s",
+        "app2unit Soundcloud.desktop",
+    }))
+    hl.bind("SUPER + D", toggle_special("communication", { "equibop" }))
+    hl.bind("SUPER + W", toggle_special("whatsapp", { "altus" }))
+    hl.bind("SUPER + T", toggle_special("thunderbird", { "thunderbird" }))
+    hl.bind("SUPER + R", toggle_special("todo", { "todoist" }))
+    hl.bind("SUPER + G", toggle_special("grok", { "app2unit -- Grok.desktop" }))
+    hl.bind("SUPER + C", toggle_special("claude", { "app2unit -- Claude.desktop" }))
+    hl.bind("SUPER + Y", toggle_special("zen", { "app2unit -- zen-twilight" }))
+    hl.bind("SUPER + X", toggle_special("helix", { "foot -a helix -T helix fish -ic hx" }))
+    hl.bind("SUPER + E", toggle_special("yazi", { "foot -a yazi -T yazi fish -ic yazi" }))
 
     -- Apps
     hl.bind("SUPER + Return", hl.dsp.exec_cmd("app2unit -- foot"))
