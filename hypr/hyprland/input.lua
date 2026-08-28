@@ -26,6 +26,16 @@ hl.config({
             scroll_factor = 0.5,
         },
     },
+
+    cursor = {
+        -- Nvidia + Hyprland's "auto" heuristic (cursor:no_hardware_cursors)
+        -- falls back to a software-rendered cursor, which gets baked
+        -- directly into any screen-buffer capture (e.g. caelestia's region
+        -- screenshot picker) since it's not on a separate hardware overlay
+        -- plane that capture tools can exclude. Force hardware cursors back
+        -- on to fix this. See github.com/caelestia-dots/shell/issues/960.
+        no_hardware_cursors = false,
+    },
 })
 
 hl.device({
