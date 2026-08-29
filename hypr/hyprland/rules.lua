@@ -32,4 +32,8 @@ hl.window_rule({
     no_focus = true,
 })
 
-hl.window_rule({ match = { class = "zen-twilight" }, opaque = true })
+hl.window_rule({
+    match = { class = "zen-twilight" },
+    opaque = true,
+    opacity = "1 override",
+})
