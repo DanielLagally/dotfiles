@@ -140,8 +140,8 @@ hl.define_submap("global", function()
     -- Go to workspace group -1/+1
     hl.bind("CTRL+SUPER + mouse_down", hl.dsp.focus({ workspace = "-10" }))
     hl.bind("CTRL+SUPER + mouse_up", hl.dsp.focus({ workspace = "+10" }))
-    -- Toggle special workspace
-    hl.bind("SUPER + S", hl.dsp.exec_cmd("caelestia toggle specialws"))
+    -- Toggle steam/game special workspace
+    hl.bind("SUPER + S", toggle_special("steam", { "steam" }))
 
     -- Move window to workspace -1/+1
     hl.bind("SUPER+ALT + Page_Up", hl.dsp.window.move({ workspace = "-1" }), { repeating = true })
@@ -150,8 +150,8 @@ hl.define_submap("global", function()
     hl.bind("SUPER+ALT + mouse_up", hl.dsp.window.move({ workspace = "+1" }))
     hl.bind("CTRL+SUPER+SHIFT + right", hl.dsp.window.move({ workspace = "+1" }), { repeating = true })
     hl.bind("CTRL+SUPER+SHIFT + left", hl.dsp.window.move({ workspace = "-1" }), { repeating = true })
-    -- Move window to/from special workspace
-    hl.bind("SUPER+SHIFT + S", hl.dsp.window.move({ workspace = "special:special" }))
+    -- Move window to/from steam/game special workspace
+    hl.bind("SUPER+SHIFT + S", hl.dsp.window.move({ workspace = "special:steam" }))
 
     -- Window groups
     hl.bind("ALT + Tab", hl.dsp.window.cycle_next({ next = true }), { repeating = true })

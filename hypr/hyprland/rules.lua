@@ -37,3 +37,7 @@ hl.window_rule({
     opaque = true,
     opacity = "1 override",
 })
+
+hl.window_rule({ match = { class = "^steam$" }, workspace = "special:steam" })
+hl.window_rule({ match = { class = "^steam_app_" }, workspace = "special:steam" })
+hl.window_rule({ match = { class = "^gamescope$" }, workspace = "special:steam" })

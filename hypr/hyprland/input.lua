@@ -27,6 +27,11 @@ hl.config({
         },
     },
 
+    binds = {
+        -- Let SUPER+S etc. still fire while Steam/games have an X grab.
+        disable_keybind_grabbing = true,
+    },
+
     cursor = {
         -- Nvidia + Hyprland's "auto" heuristic (cursor:no_hardware_cursors)
         -- falls back to a software-rendered cursor, which gets baked

@@ -277,7 +277,7 @@
         "scrollActions": {
             "brightness": true,
             "volume": true,
-            "workspaces": true
+            "workspaces": false
         },
         "showOnHover": true,
         "statusIcons": [
@@ -331,11 +331,55 @@
             "perMonitorWorkspaces": true,
             "showWindows": false,
             "showWindowsOnSpecialWorkspaces": false,
-            "shown": 5,
+            "shown": 10,
             "specialWorkspaceIcons": [
                 {
                     "icon": "sports_esports",
                     "name": "steam"
+                },
+                {
+                    "icon": "monitoring",
+                    "name": "sysmon"
+                },
+                {
+                    "icon": "headphones",
+                    "name": "soundcloud"
+                },
+                {
+                    "icon": "chat",
+                    "name": "communication"
+                },
+                {
+                    "icon": "chat_bubble",
+                    "name": "whatsapp"
+                },
+                {
+                    "icon": "mail",
+                    "name": "thunderbird"
+                },
+                {
+                    "icon": "checklist",
+                    "name": "todo"
+                },
+                {
+                    "icon": "smart_toy",
+                    "name": "grok"
+                },
+                {
+                    "icon": "psychology",
+                    "name": "claude"
+                },
+                {
+                    "icon": "language",
+                    "name": "zen"
+                },
+                {
+                    "icon": "terminal",
+                    "name": "helix"
+                },
+                {
+                    "icon": "folder_open",
+                    "name": "yazi"
                 }
             ],
             "windowIcons": [
