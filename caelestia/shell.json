@@ -331,7 +331,7 @@
             "perMonitorWorkspaces": true,
             "showWindows": false,
             "showWindowsOnSpecialWorkspaces": false,
-            "shown": 10,
+            "shown": 7,
             "specialWorkspaceIcons": [
                 {
                     "icon": "sports_esports",
