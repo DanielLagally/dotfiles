@@ -31,3 +31,5 @@ hl.window_rule({
     no_initial_focus = true,
     no_focus = true,
 })
+
+hl.window_rule({ match = { class = "zen-twilight" }, opaque = true })

@@ -49,7 +49,8 @@ local function wsaction_move_silent(range, i)
 end
 
 -- If already viewing this special WS, hide it. If it has windows, show it.
--- If empty, spawn cmds onto it (Hypr shows the special WS on map).
+-- If empty, show it first then spawn — Zen PWAs reuse an existing process, so
+-- `[workspace special:]` on exec never applies; they land on the focused WS.
 local function toggle_special(name, cmds)
     return function()
         local target = "special:" .. name
@@ -67,8 +68,9 @@ local function toggle_special(name, cmds)
         if occupied then
             return hl.dispatch(hl.dsp.workspace.toggle_special(name))
         end
+        hl.dispatch(hl.dsp.workspace.toggle_special(name))
         for _, cmd in ipairs(cmds) do
-            hl.dispatch(hl.dsp.exec_cmd(cmd, { workspace = target }))
+            hl.dispatch(hl.dsp.exec_cmd(cmd))
         end
     end
 end
@@ -192,10 +194,7 @@ hl.define_submap("global", function()
     hl.bind("CTRL+SHIFT + Escape", toggle_special("sysmon", {
         "foot -a btop -T btop fish -C 'exec btop'",
     }))
-    hl.bind("SUPER + M", toggle_special("music", {
-        "spicetify watch -s",
-        "app2unit Soundcloud.desktop",
-    }))
+    hl.bind("SUPER + M", toggle_special("soundcloud", { "app2unit -- Soundcloud.desktop" }))
     hl.bind("SUPER + D", toggle_special("communication", { "equibop" }))
     hl.bind("SUPER + W", toggle_special("whatsapp", { "altus" }))
     hl.bind("SUPER + T", toggle_special("thunderbird", { "thunderbird" }))

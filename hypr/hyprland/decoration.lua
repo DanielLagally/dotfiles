@@ -1,1 +1,7 @@
-../_upstream/hyprland/decoration.lua
+require("_upstream.hyprland.decoration")
+
+hl.config({
+    decoration = {
+        dim_special = 0,
+    },
+})
