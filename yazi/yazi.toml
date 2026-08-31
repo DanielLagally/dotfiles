@@ -1,0 +1,14 @@
+# Images open in imv instead of the xdg default (which is Aseprite).
+# yazi has no built-in image opener: the default rule sends image/* to
+# xdg-open. This defines an imv opener and prepends a rule for it, keeping
+# every other default opener/rule intact.
+# NOTE: yazi passes files via %s placeholders, NOT shell "$@" — `imv "$@"`
+# would receive no arguments.
+[opener]
+image = [
+  { run = "imv %s", orphan = true, for = "unix" },
+]
+
+[[open.prepend_rules]]
+mime = "image/*"
+use = "image"
