@@ -210,7 +210,7 @@ hl.define_submap("global", function()
     hl.bind("CTRL+ALT + V", hl.dsp.exec_cmd("app2unit -- pavucontrol"))
 
     -- Utilities
-    hl.bind("Print", hl.dsp.exec_cmd("grimblast copy area --freeze; pkill -9 hyprpicker"))
+    hl.bind("Print", hl.dsp.exec_cmd("$HOME/Dev/lensy/result/bin/lensy region --freeze; pkill -9 hyprpicker"))
     hl.bind("ALT + Print", hl.dsp.exec_cmd("caelestia screenshot"), { locked = true }) -- Full screen capture > clipboard
     hl.bind("SHIFT + Print", hl.dsp.global("caelestia:screenshotFreeze")) -- Capture region (freeze)
     hl.bind("SUPER+ALT + R", hl.dsp.exec_cmd("caelestia record -s")) -- Record screen with sound
