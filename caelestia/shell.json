@@ -473,9 +473,18 @@
                 },
                 {
                     "idleAction": [
-                        "hibernate"
+                        "sh",
+                        "-c",
+                        "touch \"$XDG_RUNTIME_DIR/steward-away\""
                     ],
-                    "timeout": 1800
+                    "inhibitWhenAudio": true,
+                    "respectInhibitors": true,
+                    "returnAction": [
+                        "sh",
+                        "-c",
+                        "rm -f \"$XDG_RUNTIME_DIR/steward-away\""
+                    ],
+                    "timeout": 900
                 }
             ]
         },
