@@ -1,14 +1,70 @@
-# Images open in imv instead of the xdg default (which is Aseprite).
-# yazi has no built-in image opener: the default rule sends image/* to
-# xdg-open. This defines an imv opener and prepends a rule for it, keeping
-# every other default opener/rule intact.
+# How files open.
+#   o  opens with the first opener listed for the file type
+#   O  opens an "open with" menu with every opener for that type
+#
+# Openers are named commands. Rules at the bottom pick which openers apply.
 # NOTE: yazi passes files via %s placeholders, NOT shell "$@" — `imv "$@"`
 # would receive no arguments.
+#   block = true   runs in this terminal; yazi resumes when the program quits
+#   orphan = true  starts a separate process (GUI apps)
 [opener]
 image = [
   { run = "imv %s", orphan = true, for = "unix" },
 ]
 
-[[open.prepend_rules]]
-mime = "image/*"
-use = "image"
+# Markdown, rendered by glow. Read in this terminal or in a new window.
+markdown = [
+  { run = "glow -p %s", block = true, for = "unix", desc = "glow (reader, this terminal)" },
+  { run = "foot -e glow -p %s", orphan = true, for = "unix", desc = "glow (new window)" },
+]
+
+# Documents
+zathura = [
+  { run = "zathura %s", orphan = true, for = "unix", desc = "zathura (PDF)" },
+]
+
+# Tables and data
+csv = [
+  { run = "csvlens %s", block = true, for = "unix", desc = "csvlens (table viewer)" },
+]
+json = [
+  { run = "jq -C . %s | less -R", block = true, for = "unix", desc = "pretty print (jq)" },
+]
+
+# Plain text, read only
+view = [
+  { run = "less %s", block = true, for = "unix", desc = "less (read only)" },
+]
+
+# Zip archives: list contents without extracting
+zip-list = [
+  { run = "unzip -l %s | less", block = true, for = "unix", desc = "list contents (unzip)" },
+]
+
+# GUI alternatives
+zed = [
+  { run = "zeditor %s", orphan = true, for = "linux", desc = "Zed" },
+]
+zen = [
+  { run = "zen-twilight %s", orphan = true, for = "unix", desc = "Zen (browser)" },
+]
+
+# Rules are checked top to bottom; the first match wins.
+[open]
+prepend_rules = [
+  { mime = "image/*", use = "image" },
+  { url = "*.md", use = [ "markdown", "edit", "zed" ] },
+  { url = "*.csv", use = [ "csv", "edit" ] },
+  # JSON is mostly config in your folders, so the editor stays first
+  { url = "*.json", use = [ "edit", "json" ] },
+  { url = "*.pdf", use = [ "zathura", "open", "zen" ] },
+  { url = "*.html", use = [ "zen", "open", "edit" ] },
+  { url = "*.zip", use = [ "zip-list" ] },
+  { mime = "text/*", use = [ "edit", "zed", "view" ] },
+]
+
+# Preview pane: markdown rendered by the glow plugin (plugins/glow.yazi).
+[plugin]
+prepend_previewers = [
+  { url = "*.md", run = "glow" },
+]
